@@ -7,11 +7,12 @@ export default function PropertyCard({property}) {
 
     const navigation = useNavigation();
 
+    // console.log(property.images[0])
 
   return (
     <View className="max-w-sm w-full my-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <TouchableOpacity>
-        <Image className="rounded-t-lg w-[auto] h-[200px]" source={require(`../assets/properties/a1.jpg`)}/>
+        <Image className="rounded-t-lg w-[auto] h-[200px]" source={{uri:property.images[0]}}/>
       </TouchableOpacity>
       <View className="p-5">
         <View className="flex flex-row justify-between items-center mb-2">
@@ -42,7 +43,9 @@ export default function PropertyCard({property}) {
         </View>
 
         <TouchableOpacity 
-         onPress={()=> navigation.navigate('PropertyDetails')}
+         onPress={()=> navigation.navigate('PropertyDetails',{
+            id:property._id
+         })}
         >
             <Text className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Details</Text>
         </TouchableOpacity>
